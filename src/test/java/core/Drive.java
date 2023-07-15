@@ -74,8 +74,8 @@ public class Drive {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static void criaDiretorio(){
-        String caminho = "src/test/resources/evidences";
-        directory = new File(caminho + "/"+ nameScenario);
+        String path = "target/report/attachments";
+        directory = new File(path + "/"+ nameScenario);
         directory.mkdir();
         numberPrint = 0;
     }
