@@ -12,13 +12,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 //this class will be charge to manipulate to browser
 public class Drive {
     public static WebDriver getDriver() {
         return driver;
     }
-
 
 
     //to use encapsule
@@ -36,14 +36,6 @@ public class Drive {
     private static String nameScenario;
     private static File directory;
 
-    public static int getNumberPrint() {
-        return numberPrint;
-    }
-
-    public static void setNumberPrint(int numberPrint) {
-        Drive.numberPrint = numberPrint;
-    }
-
     private static int numberPrint;
 
     public static File getDirectory() {
@@ -56,20 +48,26 @@ public class Drive {
             case CHROME:
                 startChrome();
         }
+        //we need use webdriver wait class and use extra leyer implicity wait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     //this method will be setUp chrome browser
     private void startChrome() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        //this option will be allow to execute on CI/CD
-        boolean headless = Boolean.parseBoolean(System.getProperty("healess"));
-        chromeOptions.setHeadless(headless);
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--disable-popup-blocking");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--incognito");
         driver = new ChromeDriver(chromeOptions);
-        driver.manage().window().setSize(new Dimension(1200, 720));
     }
 
-    //this method is strategy to wait visibility element, this method avoid
+    //this method is strategy to wait visibility element, this method avoid broke code
     public static void visibilityOf(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
