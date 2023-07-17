@@ -11,7 +11,7 @@ public class RegisterMap {
     @FindBy(css = "input[placeholder='Last Name']")
     public WebElement inputLastName;
 
-    @FindBy(css = ".form-control.ng-pristine.ng-valid.ng-touched[rows='3']")
+    @FindBy(css = "#basicBootstrapForm > div:nth-child(2) > div > textarea")
     public WebElement inputAdressField;
 
     @FindBy(css = "input[type='email']")
@@ -35,8 +35,12 @@ public class RegisterMap {
     @FindBy(xpath = "//input[@id='checkbox3']")
     public WebElement checkboxHockey;
 
-    @FindBy(css = "#basicBootstrapForm > div:nth-child(7) > div > multi-select > div:nth-child(2) > ul > li:nth-child(1)")
-    public WebElement listLanguages;
+    @FindBy(css = "#basicBootstrapForm > div:nth-child(7) > div > multi-select > div:nth-child(2) > ul")
+    public WebElement openlistLanguages;
+
+    @FindBy(css = "#basicBootstrapForm > div:nth-child(7) > div > multi-select > div:nth-child(2) > ul > li:nth-child(1) > a")
+    public WebElement clicklistLanguages;
+
 
     @FindBy(xpath = "//select[@id='Skills']")
     public WebElement selectSkills;
@@ -44,7 +48,7 @@ public class RegisterMap {
     @FindBy(xpath = "//select[@id='countries']")
     public WebElement selectCountries;
 
-    @FindBy(css = "#select2-country-results")
+    @FindBy(css = "#country")
     public WebElement selectCountry;
 
     @FindBy(xpath = "//select[@id='yearbox']")
