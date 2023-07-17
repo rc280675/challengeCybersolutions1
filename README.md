@@ -1,4 +1,4 @@
 # challengeCybersolutions1
 
 
-mvn test -Dcucumber.filter.tags="@Register" && mvn cluecumber-report:reporting
+mvn test -Dcucumber.filter.tags="@Challenger" && mvn cluecumber-report:reporting
