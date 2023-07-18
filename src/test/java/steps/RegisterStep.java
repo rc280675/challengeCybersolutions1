@@ -17,13 +17,14 @@ import java.util.Map;
 public class RegisterStep {
     RegisterPage registerPage;
 
-    @Given("the user is on pages register {string}")
-    public void theUserIsOnPagesRegister(String url) {
+    @Given("open the browser enter the URL {string}")
+    public void openTheBrowserEnterTheURL(String url) {
         Drive.getDriver().get(url);
         registerPage = new RegisterPage();
     }
+
     @When("the user filling forms field")
-    public void theUserFillingFormsField(Map<String, String> map) {
+    public void theUserFillingFormsField(Map<String, String> map) throws IOException {
         String firstName = map.get("firstName");
         String lastName = map.get("lastName");
         String adress = map.get("adress");
@@ -63,11 +64,10 @@ public class RegisterStep {
         registerPage.dayOfBirthDay(dateBirthDay);
         registerPage.setPassword(password);
         registerPage.setConfirmPassword(confirmPassword);
+        Drive.printScreen("the user filling forms field");
     }
     @When("click on button submit")
     public void clickOnButtonSubmit() {
         registerPage.btnSubmit();
     }
-
-
 }

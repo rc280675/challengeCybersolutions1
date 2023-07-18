@@ -1,9 +1,9 @@
 
-@Register
-Feature: Register functionality https://demo.automationtesting.in/Register.html
+@Register @Challenger
+Feature: Register functionality succesfully
 
   Scenario Outline: Register with the successfully
-    Given the user is on pages register "https://demo.automationtesting.in/Register.html"
+    Given open the browser enter the URL "https://demo.automationtesting.in/Register.html"
     When the user filling forms field
       | firstName       | <firstName>       |
       | lastName        | <lastName>        |

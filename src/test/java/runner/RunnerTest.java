@@ -10,7 +10,7 @@ import java.io.IOException;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features/",
-        tags = "@Register",
+        tags = "@Challenger",
         glue = ".steps",
         plugin = {"json:target/report/cucumber.json", "pretty"},
         snippets = CucumberOptions.SnippetType.CAMELCASE
